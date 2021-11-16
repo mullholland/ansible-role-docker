@@ -1,0 +1,6 @@
+---
+- name: install docker-compose binary
+  ansible.builtin.get_url:
+    url: "{{ docker_compose_url }}"
+    dest: "{{ docker_compose_path }}"
+    mode: "0755"

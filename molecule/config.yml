@@ -1,0 +1,22 @@
+---
+molecule_exceptions:
+  - variation: amazonlinux
+    reason: "Not compatible with official repository"
+
+molecule_scenarios:
+  - scenario: "default"
+    ansible: ["2.9", "2.10", "2.11"]
+    platforms:
+      - "debian9"
+      - "debian10"
+      - "debian11"
+      - "ubuntu1804"
+      - "ubuntu2004"
+      - "centos7"
+      - "centos8"
+      - "centos8-stream"
+      - "ubi8"
+      - "fedora34"
+      - "fedora35"
+      - "rockylinux8"
+      - "almalinux8"

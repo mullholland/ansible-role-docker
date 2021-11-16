@@ -1,0 +1,7 @@
+---
+docker_os: "centos"
+docker_packages_dependencies: []
+docker_packages_obsolete:
+  - docker
+  - docker-common
+  - docker-engine

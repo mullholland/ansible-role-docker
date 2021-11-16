@@ -1,0 +1,24 @@
+---
+- name: create Docker ENV folder
+  file:
+    path: "{{ docker_opts_path }}"
+    state: directory
+    owner: "root"
+    group: "root"
+    mode: 0755
+
+- name: create Docker ENV file
+  template:
+    src: "etc/docker/env.j2"
+    dest: "{{ docker_opts_path }}/env"
+    mode: 0644
+    owner: "root"
+    group: "root"
+  notify: restart docker
+
+- name: Adding existing user to docker group"
+  user:
+    name: "{{ item }}"
+    groups: "docker"
+    append: true
+  with_items: "{{ docker_add_users }}"

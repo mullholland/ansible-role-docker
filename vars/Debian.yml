@@ -1,0 +1,6 @@
+---
+docker_os: "debian"
+docker_packages_dependencies: []
+docker_packages_obsolete:
+  - docker
+  - docker-engine
