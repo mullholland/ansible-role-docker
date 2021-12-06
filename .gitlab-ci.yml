@@ -6,9 +6,9 @@ services:
 
 stages:
   - linting
-  - "default-29"
   - "default-210"
   - "default-211"
+  - "default-212"
 
 variables:
   DOCKER_HOST: "tcp://docker:2375"
@@ -23,21 +23,6 @@ linting:
     - "command=${COMMAND} /opt/molecule.sh"
 
 
-"default-29":
-  needs:
-    - "linting"
-  stage: "default-29"
-  variables:
-    SCENARIO: "default"
-    ANSIBLE: "2.9"
-  rules:
-    - if: $CI_COMMIT_REF_NAME == "main"
-  parallel:
-    matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, centos7, centos8, centos8-stream, ubi8, fedora34, fedora35, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
-  script:
-    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
-
 "default-210":
   needs:
     - "linting"
@@ -49,7 +34,7 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, centos7, centos8, centos8-stream, ubi8, fedora34, fedora35, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, centos7, centos-stream8, centos-stream9, ubi8, fedora34, fedora35]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
 
@@ -64,6 +49,21 @@ linting:
     - if: $CI_COMMIT_REF_NAME == "main"
   parallel:
     matrix:
-      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, centos7, centos8, centos8-stream, ubi8, fedora34, fedora35, rockylinux8, almalinux8]  # yamllint disable-line rule:line-length
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, centos7, centos-stream8, centos-stream9, ubi8, fedora34, fedora35]  # yamllint disable-line rule:line-length
+  script:
+    - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"
+
+"default-212":
+  needs:
+    - "linting"
+  stage: "default-212"
+  variables:
+    SCENARIO: "default"
+    ANSIBLE: "2.12"
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main"
+  parallel:
+    matrix:
+      - PLATFORM: [debian9, debian10, debian11, ubuntu1804, ubuntu2004, centos7, centos-stream8, centos-stream9, ubi8, fedora34, fedora35]  # yamllint disable-line rule:line-length
   script:
     - "scenario=${SCENARIO} ansible=${ANSIBLE} platform=${PLATFORM} /opt/molecule.sh"

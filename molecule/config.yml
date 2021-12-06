@@ -5,7 +5,7 @@ molecule_exceptions:
 
 molecule_scenarios:
   - scenario: "default"
-    ansible: ["2.9", "2.10", "2.11"]
+    ansible: ["2.10", "2.11", "2.12"]
     platforms:
       - "debian9"
       - "debian10"
@@ -13,10 +13,8 @@ molecule_scenarios:
       - "ubuntu1804"
       - "ubuntu2004"
       - "centos7"
-      - "centos8"
-      - "centos8-stream"
+      - "centos-stream8"
+      - "centos-stream9"
       - "ubi8"
       - "fedora34"
       - "fedora35"
-      - "rockylinux8"
-      - "almalinux8"
