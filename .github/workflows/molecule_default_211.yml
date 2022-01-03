@@ -20,7 +20,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: mullholland/molecule-github-action@v0.1.1
+        uses: mullholland/molecule-github-action@v0.2.3
         with:
           command: lint
           scenario: "default"
@@ -41,7 +41,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: mullholland/molecule-github-action@v0.1.1
+        uses: mullholland/molecule-github-action@v0.2.3
         with:
           namespace: "ghcr.io/mullholland"
           scenario: "default"
