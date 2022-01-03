@@ -2,6 +2,8 @@
 molecule_exceptions:
   - variation: amazonlinux
     reason: "Not compatible with official repository"
+  - variation: centos-stream9
+    reason: "Not compatible with official repository atm"
 
 molecule_scenarios:
   - scenario: "default"
@@ -14,7 +16,6 @@ molecule_scenarios:
       - "ubuntu2004"
       - "centos7"
       - "centos-stream8"
-      - "centos-stream9"
       - "ubi8"
       - "fedora34"
       - "fedora35"
