@@ -1,0 +1,22 @@
+---
+- name: Include distribution specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+    - '{{ ansible_system }}.yml'
+    - 'default.yml'
+
+- name: prepare host
+  include: prepare.yml
+
+- name: install Docker
+  include: install.yml
+
+- name: configure Docker
+  include: configure.yml
+
+- name: install Docker-compose
+  include: compose.yml
+  when: docker_install_compose

@@ -1,0 +1,10 @@
+---
+# docker_os: "rhel"
+# rhel repository has no x86_64 atm
+# https://download.docker.com/linux/rhel/
+docker_os: "centos"
+docker_packages_dependencies: []
+docker_packages_obsolete:
+  - docker
+  - docker-common
+  - docker-engine

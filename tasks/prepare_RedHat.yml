@@ -1,0 +1,10 @@
+---
+- name: RedHat/CentOS | Add docker yum repository
+  template:
+    src: "etc/yum.repos.d/docker.repo.j2"
+    dest: "/etc/yum.repos.d/docker.repo"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: restart docker
+  register: docker_repository_update
