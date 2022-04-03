@@ -62,19 +62,6 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
     - role: "mullholland.docker"
 ```
 
-The machine needs to be prepared in CI this is done using `molecule/default/prepare.yml`:
-```yaml
----
-- name: Prepare
-  hosts: all
-  become: true
-  gather_facts: true
-
-  tasks:
-    - name: check if connection still works
-      ansible.builtin.ping:
-```
-
 
 
 
@@ -96,8 +83,9 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 
 The minimum version of Ansible required is 2.10, tests have been done to:
 
--   The last 2 versions.
+-   The previous versions.
 -   The current version.
+-   The [devel](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-devel-from-github-with-pip) version.
 
 
 

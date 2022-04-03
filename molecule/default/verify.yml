@@ -6,7 +6,7 @@
 
   tasks:
     - name: SmokeTests
-      debug:
+      ansible.builtin.debug:
         msg:
           - "ansible_version => {{ansible_version}}"
           - "ansible_distribution => {{ ansible_distribution }}"
@@ -15,7 +15,7 @@
           - "ansible_system  => {{ ansible_system }}"
 
     - name: Test if Debian repository exists
-      lineinfile:
+      ansible.builtin.lineinfile:
         name: '/etc/apt/sources.list.d/docker.list'
         line: '# official docker repository'
         state: present
@@ -25,7 +25,7 @@
       when: ansible_os_family == "Debian"
 
     - name: Test if RedHat repository exists
-      lineinfile:
+      ansible.builtin.lineinfile:
         name: '/etc/yum.repos.d/docker.repo'
         line: '# official docker repository'
         state: present
@@ -35,7 +35,7 @@
       when: ansible_os_family == "RedHat"
 
     - name: Test if docker is installed
-      package:
+      ansible.builtin.package:
         name: "containerd.io"
         state: present
       check_mode: true
@@ -43,7 +43,7 @@
       failed_when: (docker_package is changed) or (docker_package is failed)
 
     - name: Test if docker is started
-      service:
+      ansible.builtin.service:
         name: "docker"
         state: started
       check_mode: true
@@ -51,12 +51,12 @@
       failed_when: (docker_service is changed) or (docker_service is failed)
 
     - name: Test docker-compose is installed
-      command: '/usr/local/bin/docker-compose'
+      ansible.builtin.command: '/usr/local/bin/docker-compose'
       register: docker_compose
       changed_when: docker_compose.rc != 0
 
     - name: Test if docker env file exists
-      lineinfile:
+      ansible.builtin.lineinfile:
         name: '/etc/docker/env'
         line: '# Collected Docker ENVIRONMENT Settings'
         state: present

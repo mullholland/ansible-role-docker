@@ -1,6 +1,6 @@
 ---
 - name: create Docker ENV folder
-  file:
+  ansible.builtin.file:
     path: "{{ docker_opts_path }}"
     state: directory
     owner: "root"
@@ -8,7 +8,7 @@
     mode: 0755
 
 - name: create Docker ENV file
-  template:
+  ansible.builtin.template:
     src: "etc/docker/env.j2"
     dest: "{{ docker_opts_path }}/env"
     mode: 0644
@@ -17,7 +17,7 @@
   notify: restart docker
 
 - name: Adding existing user to docker group"
-  user:
+  ansible.builtin.user:
     name: "{{ item }}"
     groups: "docker"
     append: true

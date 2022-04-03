@@ -7,7 +7,7 @@ molecule_exceptions:
 
 molecule_scenarios:
   - scenario: "default"
-    ansible: ["2.10", "2.11", "2.12"]
+    ansible: ["previous", "current", "next"]
     platforms:
       - "debian9"
       - "debian10"
