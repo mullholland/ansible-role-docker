@@ -1,8 +1,6 @@
 ---
 dependency:
   name: galaxy
-  options:
-    role-file: requirements.yml
 lint: |
   set -e
   yamllint .
@@ -10,7 +8,7 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "${scenario:-default}-${ansible:-latest}-${platform:-fedora35}"
+  - name: "${scenario:-default}-${ansible:-2.12}-${platform:-fedora35}"
     image: "${namespace:-ghcr.io/mullholland}/docker-molecule-${platform:-fedora35}"
     command: /sbin/init
     volumes:
@@ -21,5 +19,6 @@ provisioner:
   name: ansible
   env:
     ANSIBLE_ASYNC_DIR: /tmp/.ansible_async
+    ANSIBLE_REMOTE_TMP: /tmp/.ansible
 verifier:
   name: ansible
