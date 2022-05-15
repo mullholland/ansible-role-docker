@@ -19,5 +19,6 @@ provisioner:
   name: ansible
   env:
     ANSIBLE_ASYNC_DIR: /tmp/.ansible_async
+    ANSIBLE_REMOTE_TMP: /tmp/.ansible
 verifier:
   name: ansible
