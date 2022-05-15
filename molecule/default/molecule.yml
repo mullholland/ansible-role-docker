@@ -1,8 +1,6 @@
 ---
 dependency:
   name: galaxy
-  options:
-    role-file: requirements.yml
 lint: |
   set -e
   yamllint .
@@ -10,8 +8,8 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "${scenario:-default}-${ansible:-latest}-${platform:-fedora35}"
-    image: "${namespace:-ghcr.io/mullholland}/docker-molecule-${platform:-fedora35}"
+  - name: "${scenario:-default}-${ansible:-2.12}-${platform:-fedora35}"
+    image: "${namespace:-{{ docker_namespace }}}/docker-molecule-${platform:-fedora35}"
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
