@@ -9,7 +9,7 @@ driver:
   name: docker
 platforms:
   - name: "${scenario:-default}-${ansible:-2.12}-${platform:-fedora35}"
-    image: "${namespace:-{{ docker_namespace }}}/docker-molecule-${platform:-fedora35}"
+    image: "${namespace:-ghcr.io/mullholland}/docker-molecule-${platform:-fedora35}"
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -17,6 +17,10 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
+  inventory:
+    links:
+      host_vars: ./host_vars/
+
   env:
     ANSIBLE_ASYNC_DIR: /tmp/.ansible_async
 verifier:
