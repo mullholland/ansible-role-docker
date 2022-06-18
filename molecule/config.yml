@@ -18,6 +18,5 @@ molecule_scenarios:
       - "centos7"
       - "centos-stream8"
       - "ubi8"
-      - "fedora34"
       - "fedora35"
       - "fedora36"
