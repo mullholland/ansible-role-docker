@@ -38,7 +38,7 @@ jobs:
       env:
         command: "test"
         scenario: "default"
-        ansible: "current"
+        ansible: "previous"
     strategy:
       fail-fast: false
       matrix:
@@ -78,7 +78,7 @@ jobs:
       env:
         command: "test"
         scenario: "default"
-        ansible: "current"
+        ansible: "development"
     strategy:
       fail-fast: false
       matrix:
