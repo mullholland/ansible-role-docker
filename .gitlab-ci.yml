@@ -56,6 +56,7 @@ linting:
 "default-development":
   needs:
     - "linting"
+  allow_failure: true
   stage: "default-development"
   variables:
     SCENARIO: "default"
