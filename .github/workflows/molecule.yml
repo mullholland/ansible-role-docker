@@ -69,7 +69,7 @@ jobs:
       - name: molecule test
         run: scenario=${SCENARIO} ansible=${ANSIBLE} platform=${{ matrix.platform }} command=${command} /opt/molecule.sh
 
-  "default_next":
+  "default_development":
     runs-on: ubuntu-20.04
     needs:
       - linting
