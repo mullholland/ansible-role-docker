@@ -1,10 +1,10 @@
 ---
-- name: Debian/Ubuntu | Add Docker apt key
+- name: prepare_debian | Add Docker apt key
   ansible.builtin.apt_key:
     url: "{{ docker_apt_repo_key_url }}"
     state: present
 
-- name: Debian/Ubuntu | Add Docker apt repository
+- name: prepare_debian | Add Docker apt repository
   ansible.builtin.template:
     src: "etc/apt/sources.list.d/docker.list.j2"
     dest: "/etc/apt/sources.list.d/docker.list"
@@ -14,7 +14,7 @@
   notify: restart docker
   register: docker_repository_update
 
-- name: Debian/Ubuntu | Update after Repository update
+- name: prepare_debian | Update after Repository update
   ansible.builtin.apt:
     update_cache: true
   when: docker_repository_update.changed

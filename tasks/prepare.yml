@@ -1,18 +1,18 @@
 ---
-- name: Ensure old versions of Docker are not installed.
+- name: prepare | Ensure old versions of Docker are not installed.
   ansible.builtin.package:
     name: '{{ docker_packages_obsolete }}'
     state: absent
 
-- name: Ensure depdencies are installed.
+- name: prepare | Ensure depdencies are installed.
   ansible.builtin.package:
     name: "{{ docker_packages_dependencies }}"
     state: present
 
-- name: prepare Debian specific
-  include: prepare_Debian.yml
+- name: prepare | Prepare Debian specific
+  ansible.builtin.include_tasks: prepare_debian.yml
   when: ansible_os_family == "Debian"
 
-- name: prepare RedHat specific
-  include: prepare_RedHat.yml
+- name: prepare | Pepare RedHat specific
+  ansible.builtin.include_tasks: prepare_redhat.yml
   when: ansible_os_family == "RedHat"

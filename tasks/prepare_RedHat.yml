@@ -1,5 +1,5 @@
 ---
-- name: RedHat/CentOS | Add docker yum repository
+- name: prepare_redhat | Add docker yum repository
   ansible.builtin.template:
     src: "etc/yum.repos.d/docker.repo.j2"
     dest: "/etc/yum.repos.d/docker.repo"

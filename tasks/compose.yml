@@ -1,5 +1,5 @@
 ---
-- name: install docker-compose binary
+- name: compose | Install docker-compose binary
   ansible.builtin.get_url:
     url: "{{ docker_compose_url }}"
     dest: "{{ docker_compose_path }}"
