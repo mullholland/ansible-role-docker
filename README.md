@@ -45,10 +45,6 @@ docker_compose_path: "/usr/local/bin/docker-compose"
 docker_apt_repo_key_url: "https://download.docker.com/linux/ubuntu/gpg"
 docker_apt_release_channel: stable
 
-# Used only for RedHat/CentOS.
-docker_yum_repo_key_url: "https://download.docker.com/linux/centos/gpg"
-docker_yum_repo__url: "https://download.docker.com/linux/centos/docker-{{ docker_edition }}.repo"
-
 # Adding existing user to docker group
 docker_add_users: []
 #  - ansible
@@ -83,7 +79,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 |container|tags|
 |---------|----|
 |[EL](https://hub.docker.com/repository/docker/mullholland/docker-centos-systemd/general)|all|
-|[Amazon](https://hub.docker.com/repository/docker/mullholland/docker-amazonlinux-systemd/general)|Candidate|
 |[Fedora](https://hub.docker.com/repository/docker/mullholland/docker-fedora-systemd/general)|all|
 |[Ubuntu](https://hub.docker.com/repository/docker/mullholland/docker-ubuntu-systemd/general)|all|
 |[Debian](https://hub.docker.com/repository/docker/mullholland/docker-debian-systemd/general)|all|

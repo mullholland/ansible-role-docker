@@ -40,8 +40,6 @@ jobs:
             tag: "8"
           - image: "centos"
             tag: "latest"
-          - image: "amazonlinux"
-            tag: "2"
           - image: "fedora"
             tag: "36"
           - image: "fedora"
