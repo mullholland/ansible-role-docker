@@ -17,10 +17,6 @@ docker_compose_path: "/usr/local/bin/docker-compose"
 docker_apt_repo_key_url: "https://download.docker.com/linux/ubuntu/gpg"
 docker_apt_release_channel: stable
 
-# Used only for RedHat/CentOS.
-docker_yum_repo_key_url: "https://download.docker.com/linux/centos/gpg"
-docker_yum_repo__url: "https://download.docker.com/linux/centos/docker-{{ docker_edition }}.repo"
-
 # Adding existing user to docker group
 docker_add_users: []
 #  - ansible

@@ -12,9 +12,6 @@ galaxy_info:
     - name: EL
       versions:
         - all
-    - name: Amazon
-      versions:
-        - Candidate
     - name: Fedora
       versions:
         - all

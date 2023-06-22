@@ -1,10 +1,10 @@
 ---
-- name: Install Docker.
+- name: install | Install Docker.
   ansible.builtin.package:
     name: "{{ docker_packages }}"
     state: "{{ docker_package_state }}"
 
-- name: Ensure Docker is started and enabled at boot.
+- name: install | Ensure Docker is started and enabled at boot.
   ansible.builtin.service:
     name: docker
     state: started

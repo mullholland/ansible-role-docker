@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Installs and configures Docker.
+  homepage: https://mullholland.net
+  topics: cloud, development, system, ansible, molecule, tox, playbook
