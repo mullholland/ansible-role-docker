@@ -4,7 +4,7 @@ Installs and configures Docker.
 
 |GitHub|Downloads|Version|
 |------|---------|-------|
-|[![github](https://github.com/mullholland/ansible-role-docker/actions/workflows/molecule.yml/badge.svg)](https://github.com/mullholland/ansible-role-docker/actions/workflows/molecule.yml)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/mullholland/docker)|[![Version](https://img.shields.io/github/release/mullholland/ansible-role-docker.svg)](https://github.com/mullholland/ansible-role-docker/releases/)|
+|[![github](https://github.com/mullholland/ansible-role-docker/actions/workflows/molecule.yml/badge.svg)](https://github.com/mullholland/ansible-role-docker/actions/workflows/molecule.yml)|[![downloads](https://img.shields.io/ansible/role/d/mullholland/docker)](https://galaxy.ansible.com/mullholland/docker)|[![Version](https://img.shields.io/github/release/mullholland/ansible-role-docker.svg)](https://github.com/mullholland/ansible-role-docker/releases/)|
 ## [Example Playbook](#example-playbook)
 
 This example is taken from [`molecule/default/converge.yml`](https://github.com/mullholland/ansible-role-docker/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
