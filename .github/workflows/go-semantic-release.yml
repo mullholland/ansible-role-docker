@@ -3,12 +3,16 @@
 # Ansible managed
 #
 
-name: Create a semantic release on push to main
+name: Semantic release
 
+
+# Only release if molecule works and on main branch
 on:
-  push:
-    branches:
-      - "main"
+  workflow_run:
+    workflows: [Molecule]
+    branches: [main]
+    types:
+      - completed
 
 # If a 403 error occurs, make sure to set content permission to write
 # see: https://github.com/go-semantic-release/action/issues/27
@@ -20,7 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: go-semantic-release/action@v1
+      - name: go-semantic-release
+        uses: go-semantic-release/action@v1
         id: semrel
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

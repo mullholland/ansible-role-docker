@@ -14,7 +14,9 @@ galaxy_info:
         - all
     - name: Fedora
       versions:
-        - all
+        - "38"
+        - "39"
+        # - 40/rawhide not supported ATM
     - name: Ubuntu
       versions:
         - all
