@@ -10,45 +10,39 @@ on:
     tags_ignore:
       - '*'
   pull_request:
+    branches:
+      - master
   schedule:
     - cron: '7 4 4 * *'
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: ansible-lint
-        uses: ansible-community/ansible-lint-action@main
+        uses: ansible/ansible-lint@main
   test:
     needs:
       - lint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         config:
-          - image: "centos"
-            tag: "7"
-          - image: "centos"
-            tag: "8"
-          - image: "centos"
-            tag: "latest"
           - image: "fedora"
-            tag: "38"
+            tag: "42"
           - image: "fedora"
-            tag: "latest"
+            tag: "43"
           - image: "ubuntu"
-            tag: "latest"
+            tag: "noble"
           - image: "ubuntu"
-            tag: "focal"
-          - image: "ubuntu"
-            tag: "bionic"
+            tag: "jammy"
           - image: "debian"
-            tag: "latest"
+            tag: "bookworm"
           - image: "debian"
-            tag: "bullseye"
+            tag: "trixie"
     steps:
       - name: checkout
         uses: actions/checkout@v4

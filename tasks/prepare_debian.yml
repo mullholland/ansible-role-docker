@@ -1,8 +1,16 @@
 ---
+- name: prepare_debian | Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
+
 - name: prepare_debian | Add Docker apt key
-  ansible.builtin.apt_key:
+  ansible.builtin.get_url:
     url: "{{ docker_apt_repo_key_url }}"
-    state: present
+    dest: "{{ docker_apt_keyring }}"
+    mode: "0644"
+    force: false
 
 - name: prepare_debian | Add Docker apt repository
   ansible.builtin.template:
@@ -11,7 +19,7 @@
     owner: "root"
     group: "root"
     mode: "0644"
-  notify: restart docker
+  notify: Restart docker
   register: docker_repository_update
 
 - name: prepare_debian | Update after Repository update

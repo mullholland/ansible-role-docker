@@ -9,10 +9,10 @@
       ansible.builtin.debug:
         msg:
           - "ansible_version => {{ansible_version}}"
-          - "ansible_distribution => {{ ansible_distribution }}"
-          - "ansible_distribution_major_version => {{ ansible_distribution_major_version }}"
-          - "ansible_os_family  => {{ ansible_os_family}}"
-          - "ansible_system  => {{ ansible_system }}"
+          - "ansible_distribution => {{ ansible_facts['distribution'] }}"
+          - "ansible_distribution_major_version => {{ ansible_facts['distribution_major_version'] }}"
+          - "ansible_os_family  => {{ ansible_facts['os_family'] }}"
+          - "ansible_system  => {{ ansible_facts['system'] }}"
 
     - name: Test if Debian repository exists
       ansible.builtin.lineinfile:
@@ -22,7 +22,7 @@
       check_mode: true
       register: docker_repository
       failed_when: (docker_repository is changed) or (docker_repository is failed)
-      when: ansible_os_family == "Debian"
+      when: ansible_facts["os_family"] == "Debian"
 
     - name: Test if RedHat repository exists
       ansible.builtin.lineinfile:
@@ -32,7 +32,7 @@
       check_mode: true
       register: docker_repository
       failed_when: (docker_repository is changed) or (docker_repository is failed)
-      when: ansible_os_family == "RedHat"
+      when: ansible_facts["os_family"] == "RedHat"
 
     - name: Test if docker is installed
       ansible.builtin.package:
@@ -50,11 +50,6 @@
       register: docker_service
       failed_when: (docker_service is changed) or (docker_service is failed)
 
-    - name: Test docker-compose is installed
-      ansible.builtin.command: '/usr/local/bin/docker-compose'
-      register: docker_compose
-      changed_when: docker_compose.rc != 0
-
     - name: Test if docker env file exists
       ansible.builtin.lineinfile:
         name: '/etc/docker/env'
@@ -63,3 +58,10 @@
       check_mode: true
       register: docker_env
       failed_when: (docker_env is changed) or (docker_env is failed)
+
+    - name: Make sure we are not running podman
+      ansible.builtin.command:
+        cmd: docker --version
+      register: docker_test_one
+      failed_when:
+        - '"podman" in docker_test_one.stdout'
