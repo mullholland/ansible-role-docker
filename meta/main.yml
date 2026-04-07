@@ -3,10 +3,10 @@ galaxy_info:
   author: Mullholland
   namespace: mullholland
   role_name: docker
-  description: Installs and configures Docker.
+  description: Installs and configures Docker on Debian-based systems.
   license: MIT
   company: none
-  min_ansible_version: "2.10"
+  min_ansible_version: "2.18"
 
   platforms:
     - name: Ubuntu
