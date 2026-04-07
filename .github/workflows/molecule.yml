@@ -31,10 +31,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "fedora"
-            tag: "42"
-          - image: "fedora"
-            tag: "43"
           - image: "ubuntu"
             tag: "noble"
           - image: "ubuntu"
