@@ -2,21 +2,17 @@
 - name: Include distribution specific variables
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
-    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
-    - '{{ ansible_distribution }}.yml'
-    - '{{ ansible_os_family }}.yml'
-    - '{{ ansible_system }}.yml'
+    - '{{ ansible_facts["distribution"] }}-{{ ansible_facts["distribution_major_version"] }}.yml'
+    - '{{ ansible_facts["distribution"] }}.yml'
+    - '{{ ansible_facts["os_family"] }}.yml'
+    - '{{ ansible_facts["system"] }}.yml'
     - 'default.yml'
 
-- name: prepare host
+- name: Prepare host
   ansible.builtin.include_tasks: prepare.yml
 
-- name: install Docker
+- name: Install Docker
   ansible.builtin.include_tasks: install.yml
 
-- name: configure Docker
+- name: Configure Docker
   ansible.builtin.include_tasks: configure.yml
-
-- name: install Docker-compose
-  ansible.builtin.include_tasks: compose.yml
-  when: docker_install_compose

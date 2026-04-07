@@ -16,9 +16,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   become: true
   gather_facts: true
   roles:
-    - role: "mullholland.docker"
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"
 ```
-
 
 
 ## [Role Variables](#role-variables)
@@ -35,14 +34,9 @@ docker_packages:
   - "containerd.io"
 docker_package_state: present
 
-# Docker Compose options.
-docker_install_compose: true
-docker_compose_version: "2.1.1"
-docker_compose_url: "https://github.com/docker/compose/releases/download/v{{ docker_compose_version }}/docker-compose-linux-x86_64"
-docker_compose_path: "/usr/local/bin/docker-compose"
-
 # Used only for Debian/Ubuntu. Switch 'stable' to 'edge' if needed.
 docker_apt_repo_key_url: "https://download.docker.com/linux/ubuntu/gpg"
+docker_apt_keyring: "/etc/apt/keyrings/docker.asc"
 docker_apt_release_channel: stable
 
 # Adding existing user to docker group
@@ -78,8 +72,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 
 |container|tags|
 |---------|----|
-|[EL](https://hub.docker.com/r/mullholland/enterpriselinux)|all|
-|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|38, 39|
 |[Ubuntu](https://hub.docker.com/r/mullholland/ubuntu)|all|
 |[Debian](https://hub.docker.com/r/mullholland/debian)|all|
 
