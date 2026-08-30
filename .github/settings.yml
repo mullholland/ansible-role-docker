@@ -3,6 +3,6 @@
 # Ansible managed
 #
 repository:
-  description: Installs and configures Docker on Debian-based systems.
+  description: Installs and configures Docker.
   homepage: https://mullholland.net
   topics: cloud, development, system, ansible, molecule, playbook

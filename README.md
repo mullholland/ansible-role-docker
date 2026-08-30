@@ -1,6 +1,6 @@
 # [Ansible role docker](#docker)
 
-Installs and configures Docker on Debian-based systems.
+Installs and configures Docker.
 
 |GitHub|Downloads|Version|
 |------|---------|-------|
@@ -13,7 +13,6 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: Converge
   hosts: all
-  become: true
   gather_facts: true
   roles:
     - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"
@@ -71,6 +70,10 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 |---------|----|
 |[Ubuntu](https://hub.docker.com/r/mullholland/ubuntu)|all|
 |[Debian](https://hub.docker.com/r/mullholland/debian)|all|
+|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|all|
+|[Rocky](https://hub.docker.com/r/mullholland/rockylinux)|all|
+|[AlmaLinux](https://hub.docker.com/r/mullholland/almalinux)|all|
+|[CentOS](https://hub.docker.com/r/mullholland/centos)|all|
 
 The minimum version of Ansible required is 2.18, tests have been done to:
 
