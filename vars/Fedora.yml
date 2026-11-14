@@ -1,6 +1,10 @@
 ---
 docker_os: "fedora"
-docker_packages_dependencies: []
+# Install the nftables-based iptables before docker-ce, otherwise its iptables
+# dependency pulls in iptables-legacy, which fails on kernels without the
+# legacy xtables modules ("can't initialize iptables table `nat'").
+docker_packages_dependencies:
+  - iptables-nft
 docker_packages_obsolete:
   - docker
   - docker-common
